@@ -17,41 +17,14 @@
         padding: 0;
         background-color: #f4f4f4;
         min-height: 100vh;
-        overflow-x: hidden; /* Убирает горизонтальную прокрутку при анимации */
-      }
-
-      /* Экран загрузки (Overlay) */
-      .overlay {
-        position: fixed; 
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: #000; 
-        z-index: 9999;
-        
-        /* ГЛАВНОЕ: Центрируем и по горизонтали, и по вертикали */
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        
-        transition: opacity 0.5s ease-out;
-      }
-      
-      .welcome-text {
-        color: #fff; 
-        font-size: 3rem;
-        text-align: center; 
-        padding: 20px;
-        
-        /* Начальная позиция: чуть ниже центра и прозрачный */
-        transform: translateY(50px); 
-        opacity: 0;
-        
-        /* Ускоряем анимацию появления текста до 1 секунды */
-        transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s ease-out;
+        display: flex;
+        flex-direction: column;
       }
 
       /* Основной контент */
       .page-wrapper {
         width: 100%;
+        /* Фон страницы */
         background-image: url('https://images.unsplash.com/photo-1542359374-6ba6124bf90b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
         background-size: cover; 
         background-position: center;
@@ -61,6 +34,7 @@
         align-items: center;
         padding-top: 80px;
         padding-bottom: 50px;
+        flex: 1; /* Чтобы футер был внизу, если контента мало */
       }
 
       h1 {
@@ -68,12 +42,14 @@
         text-shadow: 0 2px 6px rgba(0,0,0,0.7);
         font-size: 3rem;
         margin-bottom: 10px;
+        text-align: center;
       }
 
       p.subtitle {
         color: #ddd; 
         margin-top: 10px;
         font-size: 1.2rem;
+        text-align: center;
       }
 
       .buttons-container { 
@@ -110,17 +86,14 @@
         color: #777;
         font-size: 0.9rem;
         width: 100%;
+        background-color: #333;
+        color: #aaa;
       }
     </style>
   </head>
   <body>
 
-    <!-- Экран загрузки -->
-    <div class="overlay" id="overlay">
-      <div class="welcome-text" id="welcome">Добро пожаловать на Tehno News</div>
-    </div>
-
-    <!-- Основной блок сайта -->
+    <!-- Основной блок сайта (без экрана загрузки) -->
     <div class="page-wrapper" id="page">
       <h1>Tehno News</h1>
       <p class="subtitle">Свежие технологические новости, аналитика, финансы</p>
@@ -136,17 +109,5 @@
       &copy; 2026 Tehno News. Все права защищены.
     </footer>
 
-    <script>
-      // Скрипт анимации появления
-      setTimeout(() => {
-        const welcome = document.getElementById('welcome');
-        const overlay = document.getElementById('overlay');
-
-        // Мгновенно показываем текст и запускаем анимацию вылета из центра
-        welcome.style.transform = 'translateY(0)';
-        welcome.style.opacity = '1';
-
-        // Скрываем черный фон через 1.2 секунды (синхронно с анимацией текста)
-        setTimeout(() => { 
-          overlay.style.opacity = '0';
-          setTimeout(() => { overlay.style.
+  </body>
+</html>
