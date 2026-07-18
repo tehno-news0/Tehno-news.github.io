@@ -4,63 +4,152 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Techno News — Главная</title>
+
+    <!-- 1. Сюда позже вставь код Яндекс Метрики (между <head> и </head>) -->
+    <!-- <script type="text/javascript" ...>...</script> -->
+
+    <!-- 2. Твой код подтверждения для Яндекс Вебмастера (замени ada1234fndn на реальный код!) -->
     <meta name="yandex-verification" content="ada1234fndn" />
+
     <style>
+      /* Базовые настройки */
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { margin: 0; overflow: hidden; }
-      .overlay {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: #000; z-index: 9999;
-        display: flex; justify-content: center; align-items: flex-end;
+      body { 
+        font-family: Arial, sans-serif; 
+        margin: 0; 
+        padding: 0;
+        background-color: #f4f4f4; /* Цвет фона, если картинка не загрузится сразу */
+        min-height: 100vh;
       }
+
+      /* Эффект появления (анимация) */
+      .overlay {
+        position: fixed; 
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: #000; 
+        z-index: 9999;
+        display: flex; 
+        justify-content: center; 
+        align-items: flex-end;
+        transition: opacity 1s ease-out;
+      }
+      
       .welcome-text {
-        color: #fff; font-family: Arial, sans-serif; font-size: 3rem;
-        text-align: center; padding: 20px;
-        transform: translateY(100px); opacity: 0;
+        color: #fff; 
+        font-size: 3rem;
+        text-align: center; 
+        padding: 20px;
+        transform: translateY(100px); 
+        opacity: 0;
         transition: transform 2s ease-out, opacity 2s ease-out;
       }
-      .page-content {
-        width: 100vw; height: 100vh;
+
+      /* Основной контент */
+      .page-wrapper {
+        width: 100%;
+        /* Убрали height: 100vh, чтобы страница могла быть длинной */
         background-image: url('https://images.unsplash.com/photo-1542359374-6ba6124bf90b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-        background-size: cover; background-position: center;
-        filter: brightness(0.3); transition: filter 2s ease-out;
-        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        background-size: cover; 
+        background-position: center;
+        filter: brightness(0.4); 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+        padding-top: 80px; /* Отступ сверху, чтобы заголовок не прилипал к экрану */
+        padding-bottom: 50px;
       }
-      .buttons-container { display: flex; gap: 20px; margin-top: 40px; }
-      button {
-        padding: 12px 24px; font-size: 1rem; cursor: pointer; border: none;
-        background: rgba(255, 255, 255, 0.9); color: #333; border-radius: 6px;
+
+      h1 {
+        color: #fff; 
+        text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+        font-size: 3rem;
+        margin-bottom: 10px;
       }
-      button:hover { background: #fff; }
+
+      p.subtitle {
+        color: #ddd; 
+        margin-top: 10px;
+        font-size: 1.2rem;
+      }
+
+      /* Кнопки-ссылки (теперь это просто ссылки с видом кнопок) */
+      .buttons-container { 
+        display: flex; 
+        gap: 20px; 
+        margin-top: 40px; 
+        flex-wrap: wrap; /* Чтобы на телефоне переносились */
+        justify-content: center;
+      }
+
+      .nav-btn {
+        padding: 15px 30px; 
+        font-size: 1rem; 
+        cursor: pointer; 
+        text-decoration: none; /* Убирает подчеркивание */
+        border: none;
+        background: rgba(255, 255, 255, 0.9); 
+        color: #333; 
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background 0.3s, transform 0.2s;
+        display: inline-block;
+      }
+
+      .nav-btn:hover { 
+        background: #fff; 
+        transform: scale(1.05); /* Лёгкое увеличение при наведении */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      /* Футер (подвал сайта) */
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #777;
+        font-size: 0.9rem;
+        width: 100%;
+      }
     </style>
   </head>
   <body>
+
+    <!-- Экран загрузки -->
     <div class="overlay" id="overlay">
       <div class="welcome-text" id="welcome">Добро пожаловать на Techno News</div>
     </div>
 
-    <div class="page-content" id="page">
-      <h1 style="color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.7);">Techno News</h1>
-      <p style="color:#ddd; margin-top:10px;">Свежие новости, аналитика, финансы</p>
+    <!-- Основной блок сайта -->
+    <div class="page-wrapper" id="page">
+      <h1>Techno News</h1>
+      <p class="subtitle">Свежие новости, аналитика, финансы</p>
 
       <div class="buttons-container">
-        <a href="news.html"><button>Новости</button></a>
-        <a href="market.html"><button>Рынок валют и акции</button></a>
-        <a href="business-help.html"><button>Помощь бизнесу</button></a>
+        <!-- Ссылки теперь работают правильно -->
+        <a href="news.html" class="nav-btn">Новости</a>
+        <a href="market.html" class="nav-btn">Рынок валют и акции</a>
+        <a href="business-help.html" class="nav-btn">Помощь бизнесу</a>
       </div>
     </div>
 
+    <footer>
+      &copy; 2026 Techno News. Проект на GitHub Pages.
+    </footer>
+
     <script>
+      // Скрипт анимации появления
       setTimeout(() => {
         const welcome = document.getElementById('welcome');
-        const page = document.getElementById('page');
         const overlay = document.getElementById('overlay');
 
         welcome.style.transform = 'translateY(0)';
         welcome.style.opacity = '1';
-        page.style.filter = 'brightness(1)';
 
-        setTimeout(() => { overlay.style.display = 'none'; }, 2000);
+        // Плавно скрываем чёрный экран
+        setTimeout(() => { 
+          overlay.style.opacity = '0';
+          // Полностью убираем из потока после исчезновения, чтобы можно было кликать
+          setTimeout(() => { overlay.style.display = 'none'; }, 1000); 
+        }, 2000);
       }, 500);
     </script>
   </body>
