@@ -1,43 +1,118 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Новости — Tehno News</title>
-  </head>
-  <body style="font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 15px;">
-    <header>
-      <h1>Новости</h1>
-      <nav>
-        <a href="index.html" style="margin-right:15px;">← На главную</a>
-        <a href="tehno-news.html">Технические новости</a> |
-        <a href="business-help.html">Помощь бизнесу</a>
-      </nav>
-      <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
-    </header>
-
-    <article style="margin-bottom: 30px;">
-      <h2>Первая новость</h2>
-      <p>Эскалация в Ормузском проливе. 
-        На этой неделе продолжалась серия ударов США по Ирану.
-        В ответ иранские силы наносили удары по объектам в соседних странах (Кувейт, Бахрейн). 
-        Эксперты отмечают, что эти события создают риски для мировой торговли, так как пролив — ключевой транзитный маршрут для нефти и газа. Источники kommersant.ru и mk.ru и 
-        aif.ru 
-      Массовая атака БПЛА в России. В ночь с 17 на 18 июля дроны массово атаковали несколько регионов. С вечера пятницы на Московский регион летело более 370 беспилотников — большую часть нейтрализовали силы ПВО на дальних подступах, 64 дрона сбили на подлёте к столице (об этом сообщал мэр Сергей Собянин). Были и другие цели: в тамбовском Котовске БПЛА попал в склад Wildberries — по данным на утро 18 июля, погибли 7 человек, более 25 пострадали. Также объект подвергся атаке в подмосковной Электростали. В Ногинске после падения обломков дрона начался пожар на нефтебазе, из-за чего в целях безопасности эвакуировали
-      расположенный рядом родильный дом. Ещё один многоквартирный дом загорелся во Владимире после попадания беспилотника, жильцы были эвакуированы. 
-        Источники msk1.ru,interfax.ru, 1tv
-      </p>
-      <small style="color: #666;">Дата: 18.07.2026</small>
-    </article>
-
-    <article style="margin-bottom: 30px;">
-      <h2>Вторая новость</h2>
-      <p>Скоро новости появятся...</p>
-      <small style="color: #666;">Дата: 17.07.2026</small>
-    </article>
-
-    <footer>
-      <p>&copy; 2026 Techno News. Все права защищены.</p>
-    </footer>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehno News — Все новости</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/8528/8528708.png">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-color: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+        }
+        header h1 { font-size: 2rem; font-weight: 300; }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+        }
+        .news-feed { display: flex; flex-direction: column; gap: 2rem; }
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .icon-box {
+            width: 80px; height: 80px; background-color: #f0f0f0; border-radius: 10px;
+            display: flex; justify-content: center; align-items: center; font-size: 2rem; color: #888;
+        }
+        .content h2 { color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.4rem; }
+        .content p { color: #666; margin-bottom: 1rem; }
+        .date-badge { color: var(--accent-color); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .actions { padding: 2rem 1rem; text-align: center; border-top: 1px solid #eee; }
+        .btn-group { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 0 auto; }
+        .btn { padding: 16px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; text-align: center; transition: background 0.3s; }
+        .btn:hover { background-color: #34495e; }
+        .btn-secondary { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+        .btn-secondary:hover { background-color: var(--primary-color); color: white; }
+        footer { text-align: center; padding: 1rem; color: #999; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header><h1>Все новости Techno News</h1></header>
+    <main class="container">
+        <section class="news-feed">
+            <article class="news-card">
+                <div class="icon-box">📺</div>
+                <div class="content">
+                    <h2>Новый телевизор Samsung с ИИ</h2>
+                    <p>Компания Samsung анонсировала линейку телевизоров 2026 года с встроенным искусственным интеллектом, который подстраивает яркость и звук под комнату.</p>
+                    <span class="date-badge">18 июля 2026 г.</span>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="icon-box">📱</div>
+                <div class="content">
+                    <h2>Релиз Android 15: что нового</h2>
+                    <p>Google выпустила финальную версию Android 15. Главные фишки: улучшенная приватность, новые анимации и поддержка складных экранов.</p>
+                    <span class="date-badge">17 июля 2026 г.</span>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="icon-box">💻</div>
+                <div class="content">
+                    <h2>Ноутбуки стали тоньше на 30%</h2>
+                    <p>Производители ноутбуков показали прототипы устройств толщиной менее 1 см. Это стало возможным благодаря новым аккумуляторам и чипам.</p>
+                    <span class="date-badge">16 июля 2026 г.</span>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="icon-box">🎮</div>
+                <div class="content">
+                    <h2>Игры на консолях подорожают</h2>
+                    <p>Sony и Microsoft планируют поднять цены на цифровые копии игр из-за роста стоимости разработки и поддержки серверов.</p>
+                    <span class="date-badge">15 июля 2026 г.</span>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="actions">
+        <div class="btn-group">
+            <a href="index.html" class="btn">На главную</a>
+            <a href="tehno-news.html" class="btn btn-secondary">Только про технологии</a>
+        </div>
+    </div>
+    <footer>&copy; 2026 Tehno News. Все права защищены.</footer>
+</body>
 </html>
