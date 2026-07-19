@@ -1,18 +1,117 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Помощь бизнесу — Tehno News</title>
-  </head>
-  <body style="font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 15px;">
-    <h1>Помощь бизнесу</h1>
-    <nav>
-      <a href="index.html" style="margin-right:15px;">← На главную</a>
-      <a href="news.html">Новости</a> |
-      <a href="tehno-news.html"> Технические новости</a>
-    </nav>
-    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
-    <p>Советы, инструменты и помощь для малого бизнеса.</p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehno News — Помощь бизнесу</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/8528/8528708.png">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-color: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+        }
+        header h1 { font-size: 2rem; font-weight: 300; }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+        }
+        .news-feed { display: flex; flex-direction: column; gap: 2rem; }
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .icon-box {
+            width: 80px; height: 80px; background-color: #f0f0f0; border-radius: 10px;
+            display: flex; justify-content: center; align-items: center; font-size: 2rem; color: #888;
+        }
+        .content h2 { color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.4rem; }
+        .content p { color: #666; margin-bottom: 1rem; }
+        .date-badge { color: var(--accent-color); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .actions { padding: 2rem 1rem; text-align: center; border-top: 1px solid #eee; }
+        .btn-group { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 0 auto; }
+        .btn { padding: 16px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; text-align: center; transition: background 0.3s; }
+        .btn:hover { background-color: #34495e; }
+        .btn-secondary { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+        .btn-secondary:hover { background-color: var(--primary-color); color: white; }
+        footer { text-align: center; padding: 1rem; color: #999; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header><h1>Помощь малому бизнесу</h1></header>
+    <main class="container">
+        <section class="news-feed">
+            <article class="news-card">
+                <div class="icon-box">💰</div>
+                <div class="content">
+                    <h2>Как выбрать кассу для небольшого магазина</h2>
+                    <p>Для малого бизнеса лучше брать онлайн-кассу с простым интерфейсом и поддержкой ОФД. Главное — проверить, что модель есть в реестре ФНС.</p>
+                    <span class="date-badge">21 июля 2026 г.</span>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="icon-box">📊</div>
+                <div class="content">
+                    <h2>Простой учёт без сложных программ</h2>
+                    <p>Если у тебя 5–10 операций в день, хватит Google Таблиц или Excel. Главное — завести отдельные листы на доходы, расходы и остатки.</p>
+                    <span class="date-badge">20 июля 2026 г.</span>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="icon-box">📢</div>
+                <div class="content">
+                    <h2>Где бесплатно продвигать бизнес</h2>
+                    <p>Бесплатные способы: карточки в Яндекс Картах и 2ГИС, посты в Telegram-каналах, объявления на Авито и Юле. Лучше комбинировать 2–3 площадки.</p>
+                    <span class="date-badge">19 июля 2026 г.</span>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="icon-box">🛠️</div>
+                <div class="content">
+                    <h2>Что нужно знать про налоги ИП</h2>
+                    <p>На УСН «Доходы» платят 6% с выручки. Важно: сдавать декларацию раз в год и платить авансы каждый квартал, чтобы не было пеней.</p>
+                    <span class="date-badge">18 июля 2026 г.</span>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="actions">
+        <div class="btn-group">
+            <a href="index.html" class="btn">На главную</a>
+            <a href="tehno-news.html" class="btn btn-secondary">Только про технологии</a>
+        </div>
+    </div>
+    <footer>&copy; 2026 Tehno News. Все права защищены.</footer>
+</body>
 </html>
